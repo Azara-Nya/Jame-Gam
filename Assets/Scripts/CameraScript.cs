@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    public Transform target;
-    public float smoothing;
-    public Vector2 maxPosition;
-    public Vector2 minPosition;
+    [SerializeField] private Transform target;
+    [SerializeField] private float smoothing;
+    [SerializeField] private Vector2 maxPosition;
+    [SerializeField] private Vector2 minPosition;
 
     void Update()
     {
