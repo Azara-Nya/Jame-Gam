@@ -6,10 +6,13 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float Damage = 1f;
     [SerializeField] private float ByeByeTime = 10f;
-    void OnCollisionEnter2D(Collision2D collision)
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        // Bullet Damage - Enemy Health
-        Destroy(gameObject);
+        if (other.gameObject.tag == "Henry")
+        {
+            Destroy(gameObject);
+        }
     }
     void Update()
     {
