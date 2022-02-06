@@ -9,7 +9,7 @@ public class Fire : MonoBehaviour
     [SerializeField] private GameObject BulletPrefab;
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (!PauseMenu.GameIsPause && Input.GetButtonDown("Fire1"))
         {
             Fires();
         }
