@@ -160,8 +160,9 @@ MonoBehaviour:
   stoppingDistance: 5
   FireInterval: 1.5
   bulletSpeed: 20
+  InfTimePlayer: 2
   ShootingPoint: {fileID: 3076671408304286906}
-  BulletPrefab: {fileID: 6661180548521409395, guid: 65d6838ad8c4670499faed5766690d23, type: 3}
+  BulletPrefab: {fileID: 7548774225571675203, guid: 3f604e3b811afa84e8be8fc58f0a4a19, type: 3}
   PM: {fileID: 0}
 --- !u!1 &2641933665622690086
 GameObject:

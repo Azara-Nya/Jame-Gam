@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D PlayerRb;
     [SerializeField] private float MoveSpeed = 5f;
+    [SerializeField] Animator Player;
+    [SerializeField] Animator GameOver;
     public float health = 3f;
     private Camera cam;
     Vector2 Movement;
@@ -21,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         if (health <= 0)
         {
             //Play Death Animation
-            //Play Game Over Menu Animation
+            GameOver.SetBool("GameOverB", true);
             Destroy(gameObject);
         }
         Movement.x = Input.GetAxisRaw("Horizontal");
