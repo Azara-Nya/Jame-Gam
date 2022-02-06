@@ -19,7 +19,7 @@ public class EnemyShooty : MonoBehaviour
     [SerializeField] private float InfTimePlayer = 2f;
     [SerializeField] private Transform ShootingPoint;
     [SerializeField] private GameObject BulletPrefab;
-    [SerializeField] PlayerMovement PM;
+    PlayerMovement PM;
 
 
     void Start()
@@ -28,26 +28,29 @@ public class EnemyShooty : MonoBehaviour
     }
     void Update()
     {
-        Vector3 lookDir = Player.position - transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
-        if (Health <= 0)
+        if (!PauseMenu.GameIsPause)
         {
-            Score.Points += 1;
-            Destroy(gameObject);
-        }
-        else
-        {
-            if (Vector2.Distance(transform.position, Player.position) > stoppingDistance)
+            Vector3 lookDir = Player.position - transform.position;
+            float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+            rb.rotation = angle;
+            if (Health <= 0)
             {
-                transform.position = Vector2.MoveTowards(transform.position, Player.position, Speed * Time.fixedDeltaTime);
+                Score.Points += 1;
+                Destroy(gameObject);
             }
             else
             {
-                if (shooting == false)
+                if (Vector2.Distance(transform.position, Player.position) > stoppingDistance)
                 {
-                    StartCoroutine(Shooter());
+                    transform.position = Vector2.MoveTowards(transform.position, Player.position, Speed * Time.fixedDeltaTime);
+                }
+                else
+                {
+                    if (shooting == false)
+                    {
+                        StartCoroutine(Shooter());
 
+                    }
                 }
             }
         }

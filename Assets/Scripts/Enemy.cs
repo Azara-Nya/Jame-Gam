@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float DamageTaken = 1f;
     [SerializeField] private float InfTime = 0.1f;
     [SerializeField] private float InfTimePlayer = 2f;
-    [SerializeField] PlayerMovement PM;
+    PlayerMovement PM;
 
 
     void Start()
@@ -22,14 +22,17 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
-        if (Health <= 0)
+        if (!PauseMenu.GameIsPause)
         {
-            Score.Points += 1;
-            Destroy(gameObject);
-        }
-        else
-        {
-            transform.position = Vector2.MoveTowards(transform.position, Player.position, Speed * Time.fixedDeltaTime);
+            if (Health <= 0)
+            {
+                Score.Points += 1;
+                Destroy(gameObject);
+            }
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, Player.position, Speed * Time.fixedDeltaTime);
+            }
         }
     }
 
