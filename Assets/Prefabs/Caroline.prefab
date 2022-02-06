@@ -158,10 +158,11 @@ MonoBehaviour:
   DamageTaken: 1
   InfTime: 0.1
   stoppingDistance: 5
-  FireInterval: 3
+  FireInterval: 1.5
   bulletSpeed: 20
   ShootingPoint: {fileID: 3076671408304286906}
   BulletPrefab: {fileID: 6661180548521409395, guid: 65d6838ad8c4670499faed5766690d23, type: 3}
+  PM: {fileID: 0}
 --- !u!1 &2641933665622690086
 GameObject:
   m_ObjectHideFlags: 0

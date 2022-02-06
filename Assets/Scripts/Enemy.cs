@@ -6,11 +6,14 @@ public class Enemy : MonoBehaviour
 {
     private Transform Player;
     private bool IsInvis = false;
+    private bool IsInvisPlayer = false;
     [SerializeField] private float Health = 2f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float Speed = 4f;
     [SerializeField] private float DamageTaken = 1f;
     [SerializeField] private float InfTime = 0.1f;
+    [SerializeField] private float InfTimePlayer = 2f;
+    [SerializeField] PlayerMovement PM;
 
 
     void Start()
@@ -41,11 +44,41 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(Invis());
             }
         }
+
+        if (other.CompareTag("Player"))
+        {
+            if (IsInvisPlayer == false)
+            {
+                PM.health -= 1;
+                //Play Attack Animation
+                StartCoroutine(InvisPlayer());
+            }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (IsInvisPlayer == false)
+            {
+                PM.health -= 1;
+                //Play Attack Animation
+                StartCoroutine(InvisPlayer());
+            }
+        }
     }
     IEnumerator Invis()
     {
         IsInvis = true;
         yield return new WaitForSeconds(InfTime);
         IsInvis = false;
+    }
+
+    IEnumerator InvisPlayer()
+    {
+        IsInvisPlayer = true;
+        yield return new WaitForSeconds(InfTimePlayer);
+        IsInvisPlayer = false;
     }
 }

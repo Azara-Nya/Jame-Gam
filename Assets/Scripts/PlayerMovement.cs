@@ -6,9 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D PlayerRb;
     [SerializeField] private float MoveSpeed = 5f;
+    public float health = 3f;
+    private Camera cam;
     Vector2 Movement;
     Vector2 MousePos;
-    private Camera cam;
 
     void Start()
     {
@@ -16,6 +17,13 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+
+        if (health <= 0)
+        {
+            //Play Death Animation
+            //Play Game Over Menu Animation
+            Destroy(gameObject);
+        }
         Movement.x = Input.GetAxisRaw("Horizontal");
         Movement.y = Input.GetAxisRaw("Vertical");
 

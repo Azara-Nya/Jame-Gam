@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyShooty : MonoBehaviour
 {
     private Transform Player;
+    private bool IsInvisPlayer = false;
     private bool IsInvis = false;
     private bool shooting = false;
     [SerializeField] private float Health = 1f;
@@ -15,8 +16,10 @@ public class EnemyShooty : MonoBehaviour
     [SerializeField] private float stoppingDistance = 15f;
     [SerializeField] private float FireInterval = 3f;
     [SerializeField] private float bulletSpeed = 20f;
+    [SerializeField] private float InfTimePlayer = 2f;
     [SerializeField] private Transform ShootingPoint;
     [SerializeField] private GameObject BulletPrefab;
+    [SerializeField] PlayerMovement PM;
 
 
     void Start()
@@ -62,6 +65,28 @@ public class EnemyShooty : MonoBehaviour
                 StartCoroutine(Invis());
             }
         }
+        if (other.CompareTag("Player"))
+        {
+            if (IsInvisPlayer == false)
+            {
+                PM.health -= 1;
+                //Play Attack Animation
+                StartCoroutine(InvisPlayer());
+            }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (IsInvisPlayer == false)
+            {
+                PM.health -= 1;
+                //Play Attack Animation
+                StartCoroutine(InvisPlayer());
+            }
+        }
     }
     IEnumerator Invis()
     {
@@ -79,5 +104,12 @@ public class EnemyShooty : MonoBehaviour
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(ShootingPoint.up * bulletSpeed, ForceMode2D.Impulse);
         shooting = false;
+    }
+
+    IEnumerator InvisPlayer()
+    {
+        IsInvisPlayer = true;
+        yield return new WaitForSeconds(InfTimePlayer);
+        IsInvisPlayer = false;
     }
 }
