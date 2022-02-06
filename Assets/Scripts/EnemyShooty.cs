@@ -30,6 +30,7 @@ public class EnemyShooty : MonoBehaviour
         rb.rotation = angle;
         if (Health <= 0)
         {
+            Score.Points += 1;
             Destroy(gameObject);
         }
         else

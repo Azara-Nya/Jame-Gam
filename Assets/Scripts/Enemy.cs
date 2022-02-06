@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
     private Transform Player;
     private bool IsInvis = false;
     [SerializeField] private float Health = 2f;
@@ -12,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float Speed = 4f;
     [SerializeField] private float DamageTaken = 1f;
     [SerializeField] private float InfTime = 0.1f;
+
 
     void Start()
     {
@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     {
         if (Health <= 0)
         {
+            Score.Points += 1;
             Destroy(gameObject);
         }
         else
