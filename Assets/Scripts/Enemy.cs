@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        PM = FindObjectOfType<PlayerMovement>();
     }
     void Update()
     {

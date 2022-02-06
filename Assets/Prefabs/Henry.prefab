@@ -119,8 +119,7 @@ MonoBehaviour:
   Speed: 3.5
   DamageTaken: 1
   InfTime: 0.1
-  InfTimePlayer: 2
-  PM: {fileID: 0}
+  InfTimePlayer: 1
 --- !u!50 &2652171325066952915
 Rigidbody2D:
   serializedVersion: 4

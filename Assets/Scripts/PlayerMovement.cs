@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D PlayerRb;
     [SerializeField] private float MoveSpeed = 5f;
+    [SerializeField] private GameObject[] hearts;
     [SerializeField] Animator Player;
     [SerializeField] Animator GameOver;
     public float health = 3f;
@@ -19,9 +20,18 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        if (health == 2)
+        {
+            hearts[2].SetActive(false);
+        }
+        if (health == 1)
+        {
+            hearts[1].SetActive(false);
+        }
 
         if (health <= 0)
         {
+            hearts[0].SetActive(false);
             //Play Death Animation
             GameOver.SetBool("GameOverB", true);
             Destroy(gameObject);

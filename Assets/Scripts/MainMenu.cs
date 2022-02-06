@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private string sceneToLoad = "Amy";
     [SerializeField] private float transtionTime = 1f;
+    [SerializeField] private Animator FadyFade;
     public void PlayGame()
     {
         StartCoroutine(LoadScene());
@@ -14,14 +15,21 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        StartCoroutine(Quiter());
     }
 
     IEnumerator LoadScene()
     {
-        //play fade animation
+        FadyFade.SetTrigger("StartFade");
         yield return new WaitForSeconds(transtionTime);
         SceneManager.LoadScene(sceneToLoad);
 
+    }
+
+    IEnumerator Quiter()
+    {
+        FadyFade.SetTrigger("StartFade");
+        yield return new WaitForSeconds(transtionTime);
+        Application.Quit();
     }
 }
