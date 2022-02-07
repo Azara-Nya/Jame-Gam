@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float DamageTaken = 1f;
     [SerializeField] private float InfTime = 0.1f;
     [SerializeField] private float InfTimePlayer = 2f;
+    [SerializeField] private SpriteRenderer ESprite;
     PlayerMovement PM;
 
 
@@ -32,6 +33,8 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                Vector2 direction = (Player.position - transform.position).normalized;
+                ESprite.flipX = direction.x > 0;
                 transform.position = Vector2.MoveTowards(transform.position, Player.position, Speed * Time.fixedDeltaTime);
             }
         }

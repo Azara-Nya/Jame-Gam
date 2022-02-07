@@ -19,6 +19,7 @@ public class EnemyShooty : MonoBehaviour
     [SerializeField] private float InfTimePlayer = 2f;
     [SerializeField] private Transform ShootingPoint;
     [SerializeField] private GameObject BulletPrefab;
+    [SerializeField] private SpriteRenderer ESprite;
     PlayerMovement PM;
 
 
@@ -42,6 +43,8 @@ public class EnemyShooty : MonoBehaviour
             {
                 if (Vector2.Distance(transform.position, Player.position) > stoppingDistance)
                 {
+                    Vector2 direction = (Player.position - transform.position).normalized;
+                    ESprite.flipX = direction.x > 0;
                     transform.position = Vector2.MoveTowards(transform.position, Player.position, Speed * Time.fixedDeltaTime);
                 }
                 else

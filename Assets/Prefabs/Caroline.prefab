@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6872586486342586032}
   - component: {fileID: 3512710060423067358}
   - component: {fileID: 823973203874522256}
+  - component: {fileID: 17607997}
   m_Layer: 0
   m_Name: Caroline
   m_TagString: Henry
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ce273e022897b5e40add954d06570f40, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -163,7 +164,26 @@ MonoBehaviour:
   InfTimePlayer: 2
   ShootingPoint: {fileID: 3076671408304286906}
   BulletPrefab: {fileID: 7548774225571675203, guid: 3f604e3b811afa84e8be8fc58f0a4a19, type: 3}
-  PM: {fileID: 0}
+  ESprite: {fileID: 3586900675197639018}
+--- !u!95 &17607997
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303611310073732246}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e42963b5d542dc941b925f7acce41b02, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2641933665622690086
 GameObject:
   m_ObjectHideFlags: 0
