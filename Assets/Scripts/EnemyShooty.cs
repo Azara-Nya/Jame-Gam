@@ -17,6 +17,7 @@ public class EnemyShooty : MonoBehaviour
     [SerializeField] private float FireInterval = 3f;
     [SerializeField] private float bulletSpeed = 20f;
     [SerializeField] private float InfTimePlayer = 2f;
+    [SerializeField] private Rigidbody2D ShootieShoot;
     [SerializeField] private Transform ShootingPoint;
     [SerializeField] private GameObject BulletPrefab;
     [SerializeField] private SpriteRenderer ESprite;
@@ -33,7 +34,7 @@ public class EnemyShooty : MonoBehaviour
         {
             Vector3 lookDir = Player.position - transform.position;
             float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-            rb.rotation = angle;
+            ShootieShoot.rotation = angle;
             if (Health <= 0)
             {
                 Score.Points += 1;
@@ -46,6 +47,7 @@ public class EnemyShooty : MonoBehaviour
                     Vector2 direction = (Player.position - transform.position).normalized;
                     ESprite.flipX = direction.x > 0;
                     transform.position = Vector2.MoveTowards(transform.position, Player.position, Speed * Time.fixedDeltaTime);
+                    // ShootieShoot.transform.position = Vector2.MoveTowards(ShootieShoot.transform.position, Player.position, Speed * Time.fixedDeltaTime);
                 }
                 else
                 {

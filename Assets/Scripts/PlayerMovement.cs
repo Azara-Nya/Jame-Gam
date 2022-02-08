@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D PlayerRb;
     [SerializeField] private Rigidbody2D SS;
+    [SerializeField] private GameObject SSS;
     [SerializeField] private float MoveSpeed = 5f;
     [SerializeField] private GameObject[] hearts;
     [SerializeField] Animator Player;
@@ -34,20 +35,22 @@ public class PlayerMovement : MonoBehaviour
         if (health <= 0)
         {
             hearts[0].SetActive(false);
-            //Play Death Animation
+            Player.SetBool("IsDead", true);
+            Destroy(SSS);
             GameOver.SetBool("GameOverB", true);
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
 
         Movement.x = Input.GetAxisRaw("Horizontal");
         Movement.y = Input.GetAxisRaw("Vertical");
         MousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector2 lookDir = MousePos - PlayerRb.position;
+        Vector2 lookDir = MousePos - SS.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
 
         PlayerRb.MovePosition(PlayerRb.position + Movement * MoveSpeed * Time.fixedDeltaTime);
 
+        SS.MovePosition(SS.position + Movement * MoveSpeed * Time.fixedDeltaTime);
         SS.rotation = angle;
 
     }

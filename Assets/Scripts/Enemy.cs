@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     private bool IsInvisPlayer = false;
     [SerializeField] private float Health = 2f;
     [SerializeField] private Rigidbody2D rb;
+
     [SerializeField] private float Speed = 4f;
     [SerializeField] private float DamageTaken = 1f;
     [SerializeField] private float InfTime = 0.1f;

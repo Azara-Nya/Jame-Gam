@@ -12,6 +12,10 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if(other.gameObject.tag == "Caroline")
+        {
+            Destroy(gameObject);
+        }
     }
     void Update()
     {
