@@ -21,6 +21,8 @@ public class EnemyShooty : MonoBehaviour
     [SerializeField] private Transform ShootingPoint;
     [SerializeField] private GameObject BulletPrefab;
     [SerializeField] private SpriteRenderer ESprite;
+    [SerializeField] private GameObject SFX;
+    [SerializeField] private AudioSource Master;
     PlayerMovement PM;
 
 
@@ -69,7 +71,6 @@ public class EnemyShooty : MonoBehaviour
             if (IsInvis == false)
             {
                 Health -= DamageTaken;
-                //Play Damage Animation
                 StartCoroutine(Invis());
             }
         }
@@ -120,4 +121,5 @@ public class EnemyShooty : MonoBehaviour
         yield return new WaitForSeconds(InfTimePlayer);
         IsInvisPlayer = false;
     }
+
 }

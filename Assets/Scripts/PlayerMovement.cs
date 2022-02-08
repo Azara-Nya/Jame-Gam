@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject SSS;
     [SerializeField] private float MoveSpeed = 5f;
     [SerializeField] private GameObject[] hearts;
+    [SerializeField] private GameObject[] SFX;
     [SerializeField] Animator Player;
     [SerializeField] Animator GameOver;
     public float health = 3f;
@@ -26,19 +27,21 @@ public class PlayerMovement : MonoBehaviour
         if (health == 2)
         {
             hearts[2].SetActive(false);
+            SFX[0].SetActive(true);
         }
         if (health == 1)
         {
             hearts[1].SetActive(false);
+            SFX[1].SetActive(true);
         }
 
         if (health <= 0)
         {
+            SFX[2].SetActive(true);
             hearts[0].SetActive(false);
             Player.SetBool("IsDead", true);
             Destroy(SSS);
             GameOver.SetBool("GameOverB", true);
-            // Destroy(gameObject);
         }
 
         Movement.x = Input.GetAxisRaw("Horizontal");
